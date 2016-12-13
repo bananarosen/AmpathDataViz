@@ -1,0 +1,88 @@
+#masterDiv {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 50px;  
+    text-align: center;
+      } 
+      
+  h2 {
+   font-family: sans-serif;
+   color: #333;
+}
+      
+  .container {
+    width: 30%;
+    display: inline; 
+  }
+ 
+#container3 {
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0 auto;
+}      
+      
+  .gauge {
+    width:200px; height:160px;
+    display: inline-block;
+    margin: 1em;
+
+  }
+      
+ p {
+     display: inline;
+}    
+
+  a:link.button,
+  a:active.button,
+  a:visited.button,
+  a:hover.button {
+    margin: 30px 5px 0 2px;
+    padding: 7px 13px;
+  }
+      
+  #sliderDiv {
+     width: 80%;
+     margin: 0 auto;
+     text-align: center;      
+      }      
+
+.selector {
+    border-radius: 5px;
+    border-width: 3px;
+    background-color: #F0F0F0;
+    float: left;
+    height: 400px;
+    margin-left: 25px;
+    width: 15%;
+}
+
+.category {
+    height: 50%;
+    font-family: "Helvetica Neue";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 16.8px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.on {
+    background-color: darkorange;
+    color: white;
+}
+
+.off {
+    color: #555;
+    background: #F0F0F0;
+}
+
+.off:hover {
+    background: #CCC;
+}
+
+#containerBar, #containerBar2 {
+    float: right;
+    width: 80%;
+}
