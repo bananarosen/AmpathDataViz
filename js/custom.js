@@ -126,127 +126,71 @@ $(function() {
       " - " + (new Date($( "#slider-range" ).slider( "values", 1 )*1000)).toDateString());
   });  
       
-/*$(function() {
-  Highcharts.chart('container2', {
-    title: {
-      text: 'Monthly Patient Retention',
-      x: -20 //center
-    },
-    subtitle: {
-      text: 'Year 2016',
-      x: -20
-    },
-    xAxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-      ]
-    },
-    yAxis: {
-      title: {
-        text: 'Number of Patients'
-      },
-      plotLines: [{
-        value: 0,
-        width: 1,
-        color: '#808080'
-      }]
-    },
-    tooltip: {
-      valueSuffix: ''
-    },
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle',
-      borderWidth: 0
-    },
-    series: [{
-      name: 'Defaulters',
-      data: [185, 188, 188, 182, 180, 179, 179, 177, 180, 183, 179, 180]
-    }, {
-      name: 'Transferred',
-      data: [69, 40, 50, 56, 30, 15, 22, 33, 40, 32, 33, 40]
-    }, {
-      name: 'Lost to Follow Up',
-      data: [52, 49, 40, 39, 52, 51, 49, 40, 39, 40, 41, 42]
-    }, {
-      name: 'Self Disengaged',
-      data: [39, 42, 33, 44, 45, 20, 33, 40, 44, 32, 37, 36]
-    }, {
-      name: 'Died',
-      data: [16, 22, 20, 18, 19, 20, 15, 17, 16, 18, 19, 20]
-    }, {
-      name: 'HIV Negative',
-      data: [16, 10, 12, 22, 20, 18, 19, 17, 12, 14, 15, 16]
-    }]
-  });
-}); */
+
       
-$(function() {
-  Highcharts.chart('container3', {
-    series: [{
-      type: "treemap",
-      layoutAlgorithm: 'stripes',
-      alternateStartingDirection: true,
-      levels: [{
-        level: 1,
-        layoutAlgorithm: 'sliceAndDice',
-        dataLabels: {
-          enabled: true,
-          align: 'center',
-          verticalAlign: 'top',
-          style: {
-            fontSize: '8px',
-            fontWeight: 'bold'
-          }
+$(function () {
+    
+
+    
+    Highcharts.chart('container', {
+       
+       //Allowed for data labels to overlap, since some titles are too long
+
+       plotOptions: {
+            series: {
+                dataLabels: {
+                crop: false,
+                allowOverlap: true,
+                overflow:"none"
+                }
+            }
+        },
+        
+        series: [{
+            type: 'treemap',
+            layoutAlgorithm: 'squarified',
+            data: [{
+                name: 'Patients In Care: 77.6%',
+                value: 1246,
+                color: '#4d4dff'
+            }, {
+                name: 'Defaulters: 11.5%',
+                value: 185,
+                color: '#6699ff'
+            }, {
+                name: 'Transferred-In: 4.3%',
+                value: 69,
+                color: '#66c2ff'
+            }, {
+                name: 'Lost to Follow Up: 3.2%',
+                value: 52,
+                color: '#80e5ff'
+            }, {
+                name: 'Self-Disengaged: 2.4%',
+                value: 2.4,
+                color: '#9966ff'
+            }, {
+                name: 'Died: 1%',
+                value: 16,
+                color: '#d24dff'
+            }, {
+                name: 'HIV Negative: 1%',
+                value: 16,
+                color: '#4d4dff'
+            }]
+        }],
+        title: {
+            text: 'Patient Distribution Breakdown'
         }
-      }],
-      data: [{
-        id: 'A',
-        name: 'Defaulters (185)',
-        color: "#EC2500"
-      }, {
-      	id: 'C' ,
-        name: 'Lost to Follow up (52)' ,
-        color: '#6F3E9C'
-      }, {
-        id: 'B',
-        name: 'In-Care (1246)',
-        color: "#ECE100",
-      }, {
-        id: 'O',
-        name: 'Transfer (69)',
-        color: '#EC9800'
-      }, {
-        parent: 'A',
-        value: 11.5 
-      }, {
-        parent: 'B',
-        value: 77.6
-      }, {
-        parent: 'O',
-        value: 4.3
-      }, {
-        name: 'Died (16)',
-        value: 1,
-        color: '#9EDE00'
-      }, { 
-      	parent: 'C' ,
-        value: 3.2
-      }, {
-      	name: 'HIV Negative (16)' ,
-        value: 1,
-        color: '#05A6F0'
-      }, {
-      	name: 'Self Disengaged (39)' ,
-        value: 2.4 ,
-        color: '#666666',
-      }]
-    }],
-    title: {
-      text: 'Patient Retention'
-    }
-  });
+    });
+    
+        $('#em').on('input', function () {
+        chart.container.style.fontSize = this.value + 'em';
+
+        // Update layout based on new font and line sizes
+        chart.isDirtyLegend = true;
+        chart.redraw(false);
+    });
 });
 
 $(function () {

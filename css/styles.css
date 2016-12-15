@@ -86,3 +86,18 @@
     float: right;
     width: 80%;
 }
+
+#main {
+  width: 750px;
+  margin: 0 auto;
+}
+#container {
+  height: 600px;
+}
+input #em {
+  width: 100%;
+}
+
+.highcharts-container {
+  font-size: 1em;
+}
